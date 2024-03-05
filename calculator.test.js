@@ -36,38 +36,42 @@ const calculator = require("./calculator");
 //   expect(result).toBeGreaterThan(0);
 // });
 
-test("Differenz von 5 - 2 ist 3", () => {
-  const result = calculator.sub(5, 2);
+describe("sub function", () => {
+  test("Differenz von 5 - 2 ist 3", () => {
+    const result = calculator.sub(5, 2);
 
-  expect(result).toBe(3);
+    expect(result).toBe(3);
+  });
+
+  test("Differenz von -5 - 2 ist -7", () => {
+    const result = calculator.sub(-5, 2);
+
+    expect(result).toBe(-7);
+  });
+
+  test("Differenz von 0 - 2 ist -2", () => {
+    const result = calculator.sub(0, 2);
+
+    expect(result).toBe(-2);
+  });
 });
 
-test("Differenz von -5 - 2 ist -7", () => {
-  const result = calculator.sub(-5, 2);
+describe("multiply function", () => {
+  test("Produkt von 5 x 2 ist 10", () => {
+    const result = calculator.multiply(5, 2);
 
-  expect(result).toBe(-7);
-});
+    expect(result).toBe(10);
+  });
 
-test("Differenz von 0 - 2 ist -2", () => {
-  const result = calculator.sub(0, 2);
+  test("Produkt von 5 x -(2) ist -10", () => {
+    const result = calculator.multiply(5, -2);
 
-  expect(result).toBe(-2);
-});
+    expect(result).toBe(-10);
+  });
 
-test("Produkt von 5 x 2 ist 10", () => {
-  const result = calculator.multiply(5, 2);
+  test("Produkt von 5 x 0 ist 0", () => {
+    const result = calculator.multiply(5, 0);
 
-  expect(result).toBe(10);
-});
-
-test("Produkt von 5 x -(2) ist -10", () => {
-  const result = calculator.multiply(5, -2);
-
-  expect(result).toBe(-10);
-});
-
-test("Produkt von 5 x 0 ist 0", () => {
-  const result = calculator.multiply(5, 0);
-
-  expect(result).toBe(0);
+    expect(result).toBe(0);
+  });
 });
