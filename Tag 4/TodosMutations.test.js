@@ -34,4 +34,34 @@ describe("Testing POST Functions of Todo Route", () => {
       { newDueDate: myDate, newIsDone: false, newTask: "Essen", newUserId: 1 }
     );
   });
+
+  test("Teste PUT Mark Funktion", async () => {
+    const mockData = {
+      data: { id: id, newIsDone: isDone },
+    };
+    axios.put.mockResolvedValue(mockData);
+    const result = await TodosMutations.markTodo(1, false);
+
+    expect(result).toEqual(mockData.data.id);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(
+      "http://localhost:5050/v1/todos/mark",
+      { id: 1, newIsDone: false }
+    );
+  });
+
+  test("Teste PUT Update Funktion", async () => {
+    const mockData = {
+      data: { todo: returnedTodo1 },
+    };
+    axios.post.mockResolvedValue(mockData);
+    const result = await TodosMutations.updateTodo(1, "Trinken", true);
+
+    expect(result).toEqual(mockData.data.todo);
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(
+      "http://localhost:5050/v1/todos/update",
+      { newDueDate: myDate, newIsDone: true, newTask: "Trinken", newUserId: 1 }
+    );
+  });
 });
